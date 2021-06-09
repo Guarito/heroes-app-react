@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Redirect, useParams } from "react-router";
 import { getHeroesById } from "../../selectors/getHeroById";
 
@@ -9,7 +9,10 @@ export const HeroScreen = ({ history }) => {
     const { heroId } = params;
 
     //Posterior a ello, al tener disponibilidad de ese id, procedemos a hacer uso del selector creado getHeroesById
-    const hero = getHeroesById(heroId);
+    // const hero = getHeroesById(heroId);
+
+    /*Bloque nuevo para introducir el useMemo*/
+    const hero = useMemo(() => getHeroesById(heroId), [heroId]);
 
     //El selector retorna undefined en el caso que se le envie un heroId invalido, por ejemplo, si se edita manualmente la ruta con caracteres aleatorios. Por ende, toca validar de que el retorno exista para poder pintar nuestro componente
     if (!hero) {
