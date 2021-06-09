@@ -18,7 +18,12 @@ export const HeroScreen = ({ history }) => {
 
     const handleReturn = () => {
         //Utilizamos el metodo goBack ubicado dentro de las props que recibe el componente desde react router dom
-        history.goBack();
+        //Realizamos una pequeña validacion para el caso en que al abrir por primera vez el navegador en la ruta de un heroe en especifico, al darle al boton de Return, redirija a la pagina principal de la aplicacion y no a alguna otra externa
+        if (history.length <= 2) {
+            history.push("/");
+        } else {
+            history.goBack();
+        }
     };
 
     const { superhero, publisher, alter_ego, first_appearance, characters } =

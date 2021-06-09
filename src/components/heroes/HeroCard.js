@@ -6,7 +6,7 @@ export const HeroCard = ({ hero }) => {
     return (
         <div className="card ms-3" style={{ maxWidth: 540 }}>
             <div className="row no-gutter">
-                <div className="col-md-5">
+                <div className="col-md-5  d-flex align-items-center">
                     <img
                         src={`./assets/heroes/${id}.jpg`}
                         alt={superhero}
