@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useMemo } from "react";
 import queryString from "query-string";
 import { useLocation } from "react-router";
 
-import { heroes } from "../../data/heroes";
 import { HeroCard } from "../heroes/HeroCard";
 
 import { useForm } from "../hooks/useForm";
@@ -30,11 +29,16 @@ export const SearchScreen = ({ history }) => {
     });
 
     const { searchText } = formValues;
-    console.log(searchText);
+    // console.log(searchText);
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Mandamos como parametro el nombre/valor que introduzca el usuario
-    const heroesFiltered = getHeroByName(searchText);
-    console.log(heroesFiltered);
+    // const heroesFiltered = getHeroByName(searchText);
+
+    //Redefinimos el concepto para que el filtrado no se ejecute con cada cambio en el termino de busqueda sino cuando el query = q cambie, es decir, luego de realizar el submit;
+
+    //Por lo tanto, redefinimos haciendo uso del useMemo:
+    const heroesFiltered = useMemo(() => getHeroByName(q), [q]);
+    // console.log(heroesFiltered);
 
     const handleSubmit = (e) => {
         e.preventDefault();
