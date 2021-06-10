@@ -1,12 +1,16 @@
 import React from "react";
 import queryString from "query-string";
 import { useLocation } from "react-router";
+
 import { heroes } from "../../data/heroes";
 import { HeroCard } from "../heroes/HeroCard";
 
 import { useForm } from "../hooks/useForm";
 
+import { getHeroByName } from "../../selectors/getHeroByName";
+
 export const SearchScreen = ({ history }) => {
+    //////////////////////////Bloque para trabajar con el useLocation///////////////////////////////////////////////
     //Mediante el hook useLocation extraemos el objeto
     const location = useLocation();
     // console.log(location.search);
@@ -19,8 +23,6 @@ export const SearchScreen = ({ history }) => {
     const { q } = parsed;
     // console.log(q);
 
-    const heroesFiltered = heroes;
-
     const [formValues, handleInputChange, reset] = useForm({
         // searchText: "",
 
@@ -29,6 +31,10 @@ export const SearchScreen = ({ history }) => {
 
     const { searchText } = formValues;
     console.log(searchText);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    const heroesFiltered = getHeroByName();
+    console.log(heroesFiltered);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log(searchText);
