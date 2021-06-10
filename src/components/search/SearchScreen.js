@@ -32,7 +32,8 @@ export const SearchScreen = ({ history }) => {
     const { searchText } = formValues;
     console.log(searchText);
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    const heroesFiltered = getHeroByName();
+    //Mandamos como parametro el nombre/valor que introduzca el usuario
+    const heroesFiltered = getHeroByName(searchText);
     console.log(heroesFiltered);
 
     const handleSubmit = (e) => {
