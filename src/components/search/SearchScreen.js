@@ -3,9 +3,8 @@ import queryString from "query-string";
 import { useLocation } from "react-router";
 
 import { HeroCard } from "../heroes/HeroCard";
-
+import { Message } from "../ui/Message";
 import { useForm } from "../hooks/useForm";
-
 import { getHeroByName } from "../../selectors/getHeroByName";
 
 export const SearchScreen = ({ history }) => {
@@ -38,6 +37,7 @@ export const SearchScreen = ({ history }) => {
 
     //Por lo tanto, redefinimos haciendo uso del useMemo:
     const heroesFiltered = useMemo(() => getHeroByName(q), [q]);
+
     // console.log(heroesFiltered);
 
     const handleSubmit = (e) => {
@@ -73,6 +73,18 @@ export const SearchScreen = ({ history }) => {
                 <div className="col-7">
                     <h4>Results</h4>
                     <hr />
+                    {!q && (
+                        <Message
+                            clase="alert-info"
+                            message="Search a hero..."
+                        />
+                    )}
+                    {q && heroesFiltered.length === 0 && (
+                        <Message
+                            clase="alert-danger"
+                            message={`Not found results with '${q}'`}
+                        />
+                    )}
                     {heroesFiltered.map((hero) => {
                         return <HeroCard key={hero.id} hero={hero} />;
                     })}
