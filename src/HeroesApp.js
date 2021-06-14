@@ -4,7 +4,7 @@ import { authReducer } from "./auth/authReducer";
 import { AppRouter } from "./routers/AppRouter";
 
 const init = () => {
-    return console.log("Init desde el reducer");
+    return JSON.parse(localStorage.getItem("user")) || { logged: false };
 };
 
 const HeroesApp = () => {
