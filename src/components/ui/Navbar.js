@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext";
 import { types } from "../../types/types";
 
 export const Navbar = () => {
     const { user, dispatch } = useContext(AuthContext);
 
+    const history = useHistory();
     const handleLogout = () => {
-        console.log("Probando boton logout...");
         dispatch({ type: types.logout });
+        history.replace("/login");
     };
 
     return (
