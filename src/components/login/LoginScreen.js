@@ -7,7 +7,7 @@ import { types } from "../../types/types";
 export const LoginScreen = ({ history }) => {
     //Utilizamos el useContext para extraer nuestro AuthContext
     const context = useContext(AuthContext);
-    const { user, dispatch } = context;
+    const { dispatch } = context;
 
     // console.log(user);
 
