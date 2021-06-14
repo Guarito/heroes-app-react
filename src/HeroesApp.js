@@ -8,9 +8,9 @@ const init = () => {
 };
 
 const HeroesApp = () => {
-    const [state, dispatch] = useReducer(authReducer, {}, init);
+    const [user, dispatch] = useReducer(authReducer, {}, init);
     return (
-        <AuthContext.Provider value={{ state, dispatch }}>
+        <AuthContext.Provider value={{ user, dispatch }}>
             <AppRouter />
         </AuthContext.Provider>
     );
