@@ -33,7 +33,11 @@ export const LoginScreen = ({ history }) => {
             },
         });
 
-        history.replace("/");
+        //Hacemos lectura del localStorage para obtener la ultima ruta visitada antes de haber hecho logout.
+        const lastPath = localStorage.getItem("lastPath") || "/";
+        // console.log(lastPath);
+        // history.replace("/");
+        history.replace(lastPath);
     };
 
     return (
