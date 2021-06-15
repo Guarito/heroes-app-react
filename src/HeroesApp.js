@@ -7,7 +7,7 @@ const init = () => {
     const userLocalStorage = JSON.parse(localStorage.getItem("user")) || {
         logged: false,
     };
-    console.log(userLocalStorage);
+    // console.log(userLocalStorage);
     return userLocalStorage;
 };
 
